@@ -23,7 +23,7 @@
 			<strong><%= params[:address] %></strong> ne semble pas être une ville valide.
 			<% elsif @meteo != nil %> 
 			
-			Actuellement dans la ville de <%= params[:address].downcase %> la température est de <strong><%= @meteo.temperature.round(1) %> °C</strong>
+			Actuellement dans la ville de <%= params[:address].downcase %>, la température est de <strong><%= @meteo.temperature.round(1) %> °C.</strong>
 			<br>
 			Au plus chaud de la journée il fera <strong><%=@meteo.max_temperature %> °C.</strong> <br>
 			<% end %>
