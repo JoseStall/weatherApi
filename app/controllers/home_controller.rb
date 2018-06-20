@@ -1,14 +1,16 @@
 require 'dotenv'
-require 'open_weather'
+require 'openweather2'
 Dotenv.load('script.env')
 
 class HomeController < ApplicationController
 	def index
-		city = params[:address]
-		puts city.to_s
-		@options = { units: "metric", APPID: ENV['weatherkey'] , lang: 'fr'}
-		@meteo =  OpenWeather::Current.city(city.to_s, @options)
-		
+		Openweather2.configure do |config|
+			config.endpoint = 'http://api.openweathermap.org/data/2.5/weather'
+			config.apikey = ENV['weatherkey']
+		end
+		if params[:address] !=nil
+			@meteo =  Openweather2.get_weather(city: params[:address], units: 'metric', lang: 'fr')
+		end
 	end
 
 	def show
