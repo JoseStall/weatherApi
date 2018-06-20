@@ -1,4 +1,3 @@
-
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
@@ -20,20 +19,18 @@
 			<% end %>
 		</div>
 		<div class="col-sm-6">
-			<% if params[:address] != nil %>
+			<% if @meteo == 0 %>
+			<strong><%= params[:address] %></strong> ne semble pas être une ville valide.
+			<% elsif @meteo != nil %> 
 			
-			Actuellement dans la ville de <%= params[:address] %> la température est de <strong><%= @meteo.temperature.round(1) %> °C</strong>
-				<br>
-				Au plus chaud de la journée il fera <strong><%=@meteo.max_temperature %> °C.</strong>
-				<% end %>
-
-			</div>
-
-			
+			Actuellement dans la ville de <%= params[:address].downcase %> la température est de <strong><%= @meteo.temperature.round(1) %> °C</strong>
+			<br>
+			Au plus chaud de la journée il fera <strong><%=@meteo.max_temperature %> °C.</strong> <br>
+			<% end %>
 		</div>
-
 	</div>
+</div>
 
 
 
-	<script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 9,cityid: '2998324',appid: 'e44a6779a9022989c2037ae9e20d8749',units: 'metric',containerid: 'openweathermap-widget-9',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
+<script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 9,cityid: '2998324',appid: 'e44a6779a9022989c2037ae9e20d8749',units: 'metric',containerid: 'openweathermap-widget-9',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
