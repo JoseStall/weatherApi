@@ -14,13 +14,22 @@
 			<label>Pour voir la météo de n'importe quelle ville c'est ici</label>
 			<%= text_field_tag 'address', nil, class: 'form-control form-control-lg', id: 'autocomplete', required: true, placeholder: 'rentre ici une adresse' %>
 			<br>
-		
 
-		<%= submit_tag "Rechercher", class: "btn btn-primary btn-styled btn-block btn-lg" %>
-		<% end %>
+
+			<%= submit_tag "Rechercher", class: "btn btn-primary btn-styled btn-block btn-lg" %>
+			<% end %>
 		</div>
+		<div>
+			
+			<% if params[:address] != nil %>
+
+			<%= OpenWeather::Current.city(params[:address], @options) %>
+			<% end %>
+		</div>
+			
 	</div>
+</div>
 
 
 
-	<script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 9,cityid: '2998324',appid: 'e44a6779a9022989c2037ae9e20d8749',units: 'metric',containerid: 'openweathermap-widget-9',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
+<script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 9,cityid: '2998324',appid: 'e44a6779a9022989c2037ae9e20d8749',units: 'metric',containerid: 'openweathermap-widget-9',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>

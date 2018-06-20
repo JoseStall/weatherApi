@@ -4,9 +4,8 @@ Dotenv.load('script.env')
 
 class HomeController < ApplicationController
 	def index
-		options = { units: "metric", APPID: ENV['weatherkey'] , lang: 'fr'}
-		puts OpenWeather::Current.city(params[:address], options)
-
+		@options = { units: "metric", APPID: ENV['weatherkey'] , lang: 'fr'}
+		
 	end
 
 	def show
