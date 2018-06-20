@@ -12,7 +12,7 @@
 	<div class="row">
 		<div  class="form-group">
 			<label>Pour voir la météo de n'importe quelle ville c'est ici</label>
-			<%= text_field_tag 'address', nil, class: 'form-control form-control-lg', id: 'autocomplete', required: true, placeholder: 'rentre ici une adresse' %>
+			<%= text_field_tag 'address', nil, class: 'form-control form-control-lg', required: true, placeholder: 'rentre ici une adresse' %>
 			<br>
 
 
@@ -21,10 +21,9 @@
 		</div>
 		<div>
 			
-			<% if params[:address] != nil %>
+			<%= @meteo if params[:address] != nil %>
 
-			<%= OpenWeather::Current.city(params[:address], @options) %>
-			<% end %>
+			
 		</div>
 			
 	</div>
